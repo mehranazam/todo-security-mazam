@@ -1,17 +1,24 @@
 package learn.models;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class AppUser extends User {
 
     private Set<String> roles;
-    private int userId;
+    private Integer userId;
 
+    public AppUser(Integer userId, String username, String password, Set<String> roles){
+        super(username, password, roles.stream().map(r -> new SimpleGrantedAuthority("ROLE_ " + r)).collect(Collectors.toList()));
+        this.userId = userId;
+        this.roles = roles;
+    }
 
 //    public AppUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 //        super(username, password, authorities);
@@ -29,7 +36,7 @@ public class AppUser extends User {
         this.roles = roles;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 

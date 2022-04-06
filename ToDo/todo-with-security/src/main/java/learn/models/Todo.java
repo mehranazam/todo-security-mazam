@@ -6,8 +6,8 @@ import java.util.Objects;
 public class Todo {
 
     private String text;
-    private int userId;
-    private boolean isPublic;
+    private Integer userId;
+    private Boolean isPublic;
     private LocalDate createDate;
 
 
@@ -19,7 +19,7 @@ public class Todo {
         this.text = text;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
@@ -27,7 +27,7 @@ public class Todo {
         this.userId = userId;
     }
 
-    public boolean isPublic() {
+    public Boolean isPublic() {
         return isPublic;
     }
 
