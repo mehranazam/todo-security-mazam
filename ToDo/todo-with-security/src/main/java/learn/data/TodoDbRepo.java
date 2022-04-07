@@ -1,6 +1,8 @@
 package learn.data;
 
 import learn.models.Todo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -8,10 +10,13 @@ import java.util.List;
 @Repository
 public class TodoDbRepo implements TodoRepo{
 
+@Autowired
+    JdbcTemplate template;
 
     @Override
     public List<Todo> findAllPublic() {
-        throw new UnsupportedOperationException();
+        String sql = "select * from todos where isPublic = 1;";
+        return template.query(sql, new TodoMapper());
     }
 
     @Override
@@ -21,7 +26,7 @@ public class TodoDbRepo implements TodoRepo{
 
     @Override
     public Todo findById(Integer todoId) {
-        throw new UnsupportedOperationException();
+        return template.query("select * from todos where todoId = ?", new TodoMapper(), todoId).stream().findAny().orElse(null);
     }
 
     @Override

@@ -1,0 +1,13 @@
+POST http://localhost:8080/api/security/login
+Content-Type: application/json
+
+{
+  "username": "bob",
+  "password": "password"
+
+}
+
+###
+
+DELETE http://localhost:8080/api/todo/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0b2RvLWFwcCIsInN1YiI6ImJvYiIsImF1dGhvcml0aWVzIjoiUk9MRV8gQVVUSE9SLCIsImV4cCI6MTY0OTM2NTMwN30.OdixeZB0oNi_SUb-mv1dC2WoVwof4c4-D4JVtL-xF7Q

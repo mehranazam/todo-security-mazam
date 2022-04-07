@@ -5,11 +5,32 @@ import java.util.Objects;
 
 public class Todo {
 
+    private Integer todoId;
     private String text;
     private Integer userId;
     private Boolean isPublic;
     private LocalDate createDate;
 
+
+    public Integer getTodoId() {
+        return todoId;
+    }
+
+    public void setTodoId(Integer todoId) {
+        this.todoId = todoId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Boolean getPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(Boolean aPublic) {
+        isPublic = aPublic;
+    }
 
     public String getText() {
         return text;
@@ -49,11 +70,11 @@ public class Todo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Todo todo = (Todo) o;
-        return userId == todo.userId && isPublic == todo.isPublic && Objects.equals(text, todo.text) && Objects.equals(createDate, todo.createDate);
+        return Objects.equals(todoId, todo.todoId) && Objects.equals(text, todo.text) && Objects.equals(userId, todo.userId) && Objects.equals(isPublic, todo.isPublic) && Objects.equals(createDate, todo.createDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(text, userId, isPublic, createDate);
+        return Objects.hash(todoId, text, userId, isPublic, createDate);
     }
 }
